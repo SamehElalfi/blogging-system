@@ -23,7 +23,12 @@ Route::get('posts/{post}', function ($slug) {
     // its only for learning purposes
     $path = __DIR__ . "/../resources/posts/{$slug}.html";
     if (!file_exists($path)) {
-        ddd('file doesn\'t exists');
+        abort(404);
+
+        // we can redirect the user to another page (e.g. home page)
+        // the address bar in the browser will contain fragment
+        // identifier (#debug)
+        // return redirect('/');
     }
 
     $post = file_get_contents($path);
