@@ -3,9 +3,35 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Support\Facades\File;
 
 class Post
 {
+    /**
+     * Return all posts content from files at 'resources/posts'
+     *
+     * @return String[]
+     */
+    public static function all()
+    {
+        // get all files stored at 'resource/posts'
+        // notice: files will be sorted by name. this will affect the order of
+        // posts in the return value
+        $files = File::files(resource_path('posts'));
+
+        // get the content of every post file
+        $posts = array_map(function ($file) {
+            // `$file` is an object of all file information
+            return $file->getContents();
+
+            // you can use `file_get_contents()` too
+            // we can get the file path by converting that object into string
+            // return file_get_contents((string) $file);
+        }, $files);
+
+        return $posts;
+    }
+
     /**
      * Search for post file by its slug and return the content of the file if
      * it's exist
