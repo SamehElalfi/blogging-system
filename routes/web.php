@@ -19,9 +19,14 @@ Route::get('/', function () {
 
 Route::get('posts/{post}', function ($slug) {
     // dangerous code don't use it in real-life app
-    // what if the file doesn't exist or the `$slug` is malicious code
+    // what if the `$slug` is malicious code
     // its only for learning purposes
-    $post = file_get_contents(__DIR__ . "/../resources/posts/{$slug}.html");
+    $path = __DIR__ . "/../resources/posts/{$slug}.html";
+    if (!file_exists($path)) {
+        ddd('file doesn\'t exists');
+    }
+
+    $post = file_get_contents($path);
 
     return view(
         'post',
