@@ -11,17 +11,17 @@
 
 <body>
     <article>
-        <h1><a href="/post">The first post</a></h1>
+        <h1><a href="/posts/my-first-post">My First Post</a></h1>
         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nisi alias magnam fugit quidem vero quia a eaque
             veniam ipsam voluptatum! Expedita, atque delectus! Quisquam ea, architecto enim fugiat labore et.</p>
     </article>
     <article>
-        <h1><a href="/post">The second post</a></h1>
+        <h1><a href="/posts/my-second-post">My Second Post</a></h1>
         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nisi alias magnam fugit quidem vero quia a eaque
             veniam ipsam voluptatum! Expedita, atque delectus! Quisquam ea, architecto enim fugiat labore et.</p>
     </article>
     <article>
-        <h1><a href="/post">The third post</a></h1>
+        <h1><a href="/posts/my-third-post">My Third Post</a></h1>
         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nisi alias magnam fugit quidem vero quia a eaque
             veniam ipsam voluptatum! Expedita, atque delectus! Quisquam ea, architecto enim fugiat labore et.</p>
     </article>
