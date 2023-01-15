@@ -17,8 +17,12 @@ Route::get('/', function () {
     return view('posts');
 });
 
-Route::get('post', function () {
-    $post = file_get_contents(__DIR__ . '/../resources/posts/my-first-post.html');
+Route::get('posts/{post}', function ($slug) {
+    // dangerous code don't use it in real-life app
+    // what if the file doesn't exist or the `$slug` is malicious code
+    // its only for learning purposes
+    $post = file_get_contents(__DIR__ . "/../resources/posts/{$slug}.html");
+
     return view(
         'post',
         ['post' => $post]
