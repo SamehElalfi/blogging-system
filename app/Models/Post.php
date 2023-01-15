@@ -30,7 +30,7 @@ class Post
         $files = File::files(resource_path('posts'));
 
         // get the content of every post file
-        $posts = array_map(function ($file) {
+        $posts = collect($files)->map(function ($file) {
             // `$file` is an object of all file information
             // return $file->getContents();
 
@@ -47,7 +47,7 @@ class Post
                 $document->body(),
                 $document->slug
             );
-        }, $files);
+        })->sortByDesc('date');
 
         return $posts;
     }
