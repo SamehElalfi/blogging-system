@@ -4,9 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\File;
+use Spatie\YamlFrontMatter\YamlFrontMatter;
 
 class Post
 {
+    public function __construct(
+        public string $title,
+        public string $excerpt,
+        public int $date,
+        public string $body,
+        public string $slug
+    ) {
+    }
+
     /**
      * Return all posts content from files at 'resources/posts'
      *
@@ -22,11 +32,21 @@ class Post
         // get the content of every post file
         $posts = array_map(function ($file) {
             // `$file` is an object of all file information
-            return $file->getContents();
+            // return $file->getContents();
 
             // you can use `file_get_contents()` too
             // we can get the file path by converting that object into string
             // return file_get_contents((string) $file);
+
+            // parse post meta data and create new Post object for every post
+            $document = YamlFrontMatter::parseFile((string) $file);
+            return new Post(
+                $document->title,
+                $document->excerpt,
+                $document->date,
+                $document->body(),
+                $document->slug
+            );
         }, $files);
 
         return $posts;
@@ -37,7 +57,7 @@ class Post
      * it's exist
      *
      * @param String $slug
-     * @return String|void
+     * @return Post
      */
     public static function find($slug)
     {
@@ -65,7 +85,16 @@ class Post
         // you may also want to use arrow function instead of anonymous function
         $post = cache()->remember("posts.{$slug}", 5, function () use ($path) {
             var_dump('reading from file not from memory');
-            return file_get_contents($path);
+
+            // parse post meta data and create new Post object
+            $document = YamlFrontMatter::parseFile($path);
+            return new Post(
+                $document->title,
+                $document->excerpt,
+                $document->date,
+                $document->body(),
+                $document->slug
+            );
         });
 
         return $post;

@@ -12,9 +12,9 @@
 
 <body>
     <article>
-        <h1><?= isset($post) ? $post : '' ?></h1>
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nisi alias magnam fugit quidem vero quia a eaque
-            veniam ipsam voluptatum! Expedita, atque delectus! Quisquam ea, architecto enim fugiat labore et.</p>
+        <h2><?= $post->title ?></h2>
+        <datetime><?= gmdate('d M Y', $post->date) ?></datetime>
+        <?= $post->body ?>
     </article>
 
     <a href="/">Go Back</a>
