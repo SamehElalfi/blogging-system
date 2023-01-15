@@ -1,0 +1,20 @@
+body {
+    margin: auto;
+    max-width: 800px;
+
+    font-family: sans-serif;
+}
+
+article h2 {
+    font-size: 2rem;
+}
+
+article p {
+    font-size: 1.2rem;
+}
+
+article + article {
+    border-top: 1px solid #dddddd;
+    padding-top: 2rem;
+    margin-top: 2rem;
+}
