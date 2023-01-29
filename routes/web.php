@@ -20,8 +20,8 @@ Route::get('/', function () {
     return view('posts', compact('posts'));
 });
 
-Route::get('posts/{post}', function ($slug) {
-    $post = Post::findOrFail($slug);
+Route::get('posts/{post}', function ($id) {
+    $post = Post::findOrFail($id);
 
     return view('post', compact('post'));
 });
