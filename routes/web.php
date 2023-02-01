@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    $posts = Post::with('category')->get();
+    $posts = Post::latest()->with('author', 'category')->get();
 
     return view('posts', compact('posts'));
 });
