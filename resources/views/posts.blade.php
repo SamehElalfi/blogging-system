@@ -9,7 +9,7 @@
             {{-- TODO: Fix n+1 problem of posts' categories --}}
             <p>
                 <b>Category: </b>
-                <a href="/category/{{ $post->category->slug }}">
+                <a href="/categories/{{ $post->category->slug }}">
                     {{ $post->category->name }}
                 </a>
             </p>
