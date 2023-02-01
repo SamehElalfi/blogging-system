@@ -5,6 +5,7 @@
             {{ $post->excerpt }}
 
             <p>
+                <x-post-author :post=$post />
                 <b>Category: </b>
                 <a href="/categories/{{ $post->category->slug }}">
                     {{ $post->category->name }}
