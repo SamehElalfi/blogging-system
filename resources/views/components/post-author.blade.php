@@ -1,3 +1,3 @@
-by <a href="/authors/{{ $post->author->id }}">
+by <a href="/authors/{{ $post->author->username }}">
     {{ $post->author->name }}
 </a>
