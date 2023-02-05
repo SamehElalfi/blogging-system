@@ -1,5 +1,17 @@
 <x-layout>
-    @foreach ($posts as $post)
+
+    @include('_posts-header')
+
+    <main class="mx-auto mt-6 max-w-6xl space-y-6 lg:mt-20">
+        @if ($posts->count())
+            <x-posts-grid :posts="$posts" />
+        @else
+            <p class="text-center">No post yet. Please, Check again later.</p>
+        @endif
+    </main>
+
+
+    {{-- @foreach ($posts as $post)
         <article>
             <h2><a href="/posts/{{ $post->slug }}">{{ $post->title }}</a></h2>
             {{ $post->excerpt }}
@@ -13,5 +25,5 @@
             </p>
 
         </article>
-    @endforeach
+    @endforeach --}}
 </x-layout>
