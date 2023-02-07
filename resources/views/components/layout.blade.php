@@ -53,4 +53,19 @@
             </div>
         </footer>
     </section>
+    <script>
+        // When the user select a category redirect the browser to
+        // the selected category page
+        document.addEventListener('DOMContentLoaded', function(e) {
+            const allCategoriesDropdown = document.querySelector('#all-categories');
+            allCategoriesDropdown.addEventListener('change', function(e) {
+                if (e.target.value === 'all') {
+                    window.location = '/';
+                } else {
+                    window.location = `/categories/${e.target.value}`;
+                }
+            });
+        });
+    </script>
+
 </body>
