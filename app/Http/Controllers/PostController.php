@@ -12,11 +12,13 @@ class PostController extends Controller
     {
         $posts = Post::latest()
             ->with('author', 'category')
-            ->filter(request(['search']))
+            ->filter(request(['search', 'category']))
             ->get();
-        $categories = Category::all();
 
-        return view('posts', compact('posts', 'categories'));
+        $categories = Category::all();
+        $currentCategory = Category::firstWhere('slug', request('category'));
+
+        return view('posts', compact('posts', 'categories', 'currentCategory'));
     }
 
     function show(Post $post)

@@ -62,7 +62,7 @@
                 if (e.target.value === 'all') {
                     window.location = '/';
                 } else {
-                    window.location = `/categories/${e.target.value}`;
+                    window.location = `/?category=${e.target.value}`;
                 }
             });
         });
