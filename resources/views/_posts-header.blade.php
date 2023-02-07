@@ -11,11 +11,7 @@
     <div class="mt-8 space-y-2 lg:space-y-0 lg:space-x-4">
         <!--  Category -->
         <div class="relative flex items-center rounded-xl bg-gray-100 lg:inline-flex">
-            @isset($currentCategory)
-                <x-categories-dropdown :$categories :currentCategory="$currentCategory" />
-            @else
-                <x-categories-dropdown :$categories />
-            @endisset
+            <x-category-dropdown />
 
             <svg class="pointer-events-none absolute -rotate-90 transform" style="right: 12px;" width="22"
                 height="22" viewBox="0 0 22 22">
