@@ -62,6 +62,9 @@
                 const currentURL = new URL(window.location.href);
                 const searchParams = new URLSearchParams(currentURL.search)
 
+                // return to page 1 when change category
+                searchParams.delete('page');
+
                 if (e.target.value === 'all') {
                     searchParams.delete('category');
                 } else {
