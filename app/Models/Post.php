@@ -30,6 +30,17 @@ class Post extends Model
             )
         );
 
+        //filter posts by author
+        $query->when(
+            $filters['author'] ?? false,
+            fn ($query, $author) =>
+            $query->whereHas(
+                'author',
+                fn ($query) =>
+                $query->where('username', $author)
+            )
+        );
+
         return $query;
     }
 

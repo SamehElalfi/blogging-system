@@ -11,7 +11,7 @@ class PostController extends Controller
     {
         $posts = Post::latest()
             ->with('author', 'category')
-            ->filter(request(['search', 'category']))
+            ->filter(request(['search', 'category', 'author']))
             ->get();
 
         return view('posts.index', compact('posts'));
