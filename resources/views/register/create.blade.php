@@ -13,7 +13,7 @@
                     </p>
                 </div>
                 <form class="mt-8 space-y-6" action="#" method="POST">
-                    <input type="hidden" name="remember" value="true">
+                    @csrf
                     <div class="-space-y-px rounded-md shadow-sm">
                         <div>
                             <label for="name" class="sr-only">Name</label>
