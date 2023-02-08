@@ -59,11 +59,16 @@
         document.addEventListener('DOMContentLoaded', function(e) {
             const allCategoriesDropdown = document.querySelector('#all-categories');
             allCategoriesDropdown.addEventListener('change', function(e) {
+                const currentURL = new URL(window.location.href);
+                const searchParams = new URLSearchParams(currentURL.search)
+
                 if (e.target.value === 'all') {
-                    window.location = '/';
+                    searchParams.delete('category');
                 } else {
-                    window.location = `/?category=${e.target.value}`;
+                    searchParams.set('category', e.target.value)
                 }
+
+                window.location = `/?${searchParams.toString()}`;
             });
         });
     </script>
