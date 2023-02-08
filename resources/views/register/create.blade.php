@@ -19,19 +19,28 @@
                             <label for="name" class="sr-only">Name</label>
                             <input id="name" name="name" type="text" autocomplete="name" required
                                 class="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-                                placeholder="Name">
+                                value="{{ old('name') }}" placeholder="Name">
+                            @error('name')
+                                <p class="mt-1 mb-4 text-xs text-red-500">{{ $message }}</p>
+                            @enderror
                         </div>
                         <div>
                             <label for="username" class="sr-only">Username</label>
                             <input id="username" name="username" type="text" autocomplete="username" required
                                 class="relative block w-full appearance-none rounded-none border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-                                placeholder="Username">
+                                value="{{ old('username') }}" placeholder="Username">
+                            @error('username')
+                                <p class="mt-1 mb-4 text-xs text-red-500">{{ $message }}</p>
+                            @enderror
                         </div>
                         <div>
                             <label for="email-address" class="sr-only">Email address</label>
                             <input id="email-address" name="email" type="email" autocomplete="email" required
                                 class="relative block w-full appearance-none rounded-none border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-                                placeholder="Email address">
+                                value="{{ old('email') }}" placeholder="Email address">
+                            @error('email')
+                                <p class="mt-1 mb-4 text-xs text-red-500">{{ $message }}</p>
+                            @enderror
                         </div>
                         <div>
                             <label for="password" class="sr-only">Password</label>
@@ -39,6 +48,9 @@
                                 required
                                 class="relative block w-full appearance-none rounded-none border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                                 placeholder="Password">
+                            @error('password')
+                                <p class="mt-1 mb-4 text-xs text-red-500">{{ $message }}</p>
+                            @enderror
                         </div>
                         <div>
                             <label for="password_confirmation" class="sr-only">Password</label>
@@ -46,6 +58,9 @@
                                 autocomplete="password_confirmation" required
                                 class="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                                 placeholder="Confirm Password">
+                            @error('password_confirmation')
+                                <p class="mt-1 mb-4 text-xs text-red-500">{{ $message }}</p>
+                            @enderror
                         </div>
                     </div>
 
