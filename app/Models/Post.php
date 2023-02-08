@@ -15,9 +15,9 @@ class Post extends Model
     {
         // filter posts by search query
         $query->when($filters['search'] ?? false, fn ($query, $search) =>
-        $query
+        $query->where(fn ($query) => $query
             ->where('title', 'like', '%' . $search . '%')
-            ->orWhere('body', 'like', '%' . $search . '%'));
+            ->orWhere('body', 'like', '%' . $search . '%')));
 
         //filter posts by category
         $query->when(
@@ -40,7 +40,6 @@ class Post extends Model
                 $query->where('username', $author)
             )
         );
-
         return $query;
     }
 
