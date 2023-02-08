@@ -15,11 +15,11 @@ class PostController extends Controller
             ->filter(request(['search', 'category']))
             ->get();
 
-        return view('posts', compact('posts'));
+        return view('posts.index', compact('posts'));
     }
 
     function show(Post $post)
     {
-        return view('post', compact('post'));
+        return view('posts.show', compact('post'));
     }
 }
