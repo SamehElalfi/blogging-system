@@ -14,13 +14,26 @@
                 </a>
             </div>
 
-            <div class="mt-8 md:mt-0">
-                <a href="/" class="text-xs font-bold uppercase">Home Page</a>
+            <div class="mt-8 flex items-center md:mt-0">
 
-                <a href="#"
-                    class="ml-3 rounded-full bg-blue-500 py-3 px-5 text-xs font-semibold uppercase text-white">
-                    Subscribe for Updates
-                </a>
+                @guest
+                    <a href="/login" class="text-xs font-bold uppercase">Login</a>
+                    <a href="/register"
+                        class="ml-3 rounded-full bg-blue-500 py-3 px-5 text-xs font-semibold uppercase text-white">
+                        Register
+                    </a>
+                @else
+                    <span class="text-xs font-bold uppercase">Welcome, {{ auth()->user()->name }}!</span>
+
+                    <form action="/logout" method="post">
+                        @csrf
+
+                        <button type="submit"
+                            class="ml-3 rounded-full bg-blue-500 py-3 px-5 text-xs font-semibold uppercase text-white">
+                            Logout
+                        </button>
+                    </form>
+                @endguest
             </div>
         </nav>
 

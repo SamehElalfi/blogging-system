@@ -12,8 +12,10 @@
                             existing account</a>
                     </p>
                 </div>
-                <form class="mt-8 space-y-6" action="#" method="POST">
+
+                <form class="mt-8 space-y-6" action="/register" method="POST">
                     @csrf
+
                     <div class="-space-y-px rounded-md shadow-sm">
                         <div>
                             <label for="name" class="sr-only">Name</label>
