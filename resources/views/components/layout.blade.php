@@ -53,12 +53,15 @@
             </div>
         </footer>
     </section>
+
+    <x-flash />
+
+
     <script>
         // When the user select a category redirect the browser to
         // the selected category page
         document.addEventListener('DOMContentLoaded', function(e) {
-            const allCategoriesDropdown = document.querySelector('#all-categories');
-            allCategoriesDropdown.addEventListener('change', function(e) {
+            function redirectAfterCategoryChange(e) {
                 const currentURL = new URL(window.location.href);
                 const searchParams = new URLSearchParams(currentURL.search)
 
@@ -72,6 +75,30 @@
                 }
 
                 window.location = `/?${searchParams.toString()}`;
+            }
+
+            const allCategoriesDropdown = document.querySelector('#all-categories');
+            if (allCategoriesDropdown) {
+                allCategoriesDropdown.addEventListener(
+                    'change',
+                    redirectAfterCategoryChange
+                );
+            }
+
+            // Hide flash messages after 4 seconds from page load
+            // First select all flash messages in the DOM and convert them into
+            // array of HTMLElements
+            const flashMessages = [...document.querySelectorAll('.flash-message')];
+
+            // Loop on each element and set timeout to make the message transparent
+            // then remove it from the DOM completely
+            flashMessages.forEach(message => {
+                setTimeout(() => {
+                    message.classList.add('opacity-0');
+                    setTimeout(() => {
+                        message.remove()
+                    }, 1000);
+                }, 4000);
             });
         });
     </script>
