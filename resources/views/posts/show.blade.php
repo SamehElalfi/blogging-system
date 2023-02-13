@@ -55,6 +55,28 @@
             </div>
 
             <section class="col-span-8 col-start-5 mt-12 space-y-4">
+
+                {{-- This code displays a form for authenticated users to post a comment. It includes a profile image, a textarea for the comment, and a submit button. --}}
+                @auth
+                    <form action="#" method="post" class="mb-16">
+                        @csrf
+
+                        <header class="flex items-center">
+                            <img src="https://i.pravatar.cc/100?u={{ auth()->id() }}" alt="{{ auth()->user()->username }}"
+                                class="h-12 w-12 rounded-full" />
+                            <span class="ml-4">Wants to participate?</span>
+                        </header>
+
+                        <textarea class="my-4 w-full rounded border border-gray-200 p-4" name="body" cols="30" rows="10"
+                            placeholder="Quick, thing of something to say!">{{ old('body') }}</textarea>
+                        <div>
+                            <button type="submit" class="rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600">
+                                Post
+                            </button>
+                        </div>
+                    </form>
+                @endauth
+
                 @foreach ($post->comments as $comment)
                     <x-post-comment :$comment />
                 @endforeach
