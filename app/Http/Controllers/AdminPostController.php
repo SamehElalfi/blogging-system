@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Models\Post;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Str;
 
@@ -10,7 +10,7 @@ class AdminPostController extends Controller
 {
     public function index()
     {
-        return view('admin.posts.index');
+        return view('admin.posts.index', ['posts' => Post::paginate(20)]);
     }
 
     function create()
