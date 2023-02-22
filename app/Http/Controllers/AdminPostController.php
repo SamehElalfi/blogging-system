@@ -58,7 +58,7 @@ class AdminPostController extends Controller
         ]);
 
         // Save the uploaded thumbnail into storage directory
-        if (array_key_exists('thumbnail', $fields)) {
+        if ($fields['thumbnail'] ?? false) {
             $fields['thumbnail'] = request()->file('thumbnail')
                 ->store('thumbnails');
         }
