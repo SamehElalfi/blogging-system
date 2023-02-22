@@ -10,7 +10,7 @@ class AdminPostController extends Controller
 {
     public function index()
     {
-        return view('admin.posts.index', ['posts' => Post::paginate(20)]);
+        return view('admin.posts.index', ['posts' => Post::paginate(10)]);
     }
 
     function create()

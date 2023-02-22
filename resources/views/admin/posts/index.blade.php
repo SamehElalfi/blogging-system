@@ -31,4 +31,5 @@
             @endforeach
         </tbody>
     </table>
+    <div class="p-4">{{ $posts->links() }}</div>
 </x-admin-layout>
