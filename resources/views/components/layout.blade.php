@@ -24,7 +24,9 @@
                         Register
                     </a>
                 @else
-                    <a href="/admin/posts" class="text-xs font-bold uppercase">Dashboard</a>
+                    @can('admin')
+                        <a href="/admin/posts" class="text-xs font-bold uppercase">Dashboard</a>
+                    @endcan
 
                     <form action="/logout" method="post">
                         @csrf
