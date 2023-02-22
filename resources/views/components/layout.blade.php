@@ -15,24 +15,21 @@
                 </a>
             </div>
 
-            <div class="mt-8 flex items-center md:mt-0">
+            <div class="mt-8 flex items-center space-x-2 md:mt-0">
 
                 @guest
                     <a href="/login" class="text-xs font-bold uppercase">Login</a>
                     <a href="/register"
-                        class="ml-3 rounded-full bg-blue-500 py-3 px-5 text-xs font-semibold uppercase text-white">
+                        class="group relative flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                         Register
                     </a>
                 @else
-                    <span class="text-xs font-bold uppercase">Welcome, {{ auth()->user()->name }}!</span>
+                    <a href="/admin/posts" class="text-xs font-bold uppercase">Dashboard</a>
 
                     <form action="/logout" method="post">
                         @csrf
 
-                        <button type="submit"
-                            class="ml-3 rounded-full bg-blue-500 py-3 px-5 text-xs font-semibold uppercase text-white">
-                            Logout
-                        </button>
+                        <x-form.button name="Logout" />
                     </form>
                 @endguest
             </div>
