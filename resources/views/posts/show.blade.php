@@ -2,7 +2,11 @@
     <main class="mx-auto mt-10 max-w-6xl space-y-6 lg:mt-20">
         <article class="mx-auto max-w-4xl gap-x-10 lg:grid lg:grid-cols-12">
             <div class="col-span-4 mb-10 lg:pt-14 lg:text-center">
-                <img src="/images/illustration-1.png" alt="" class="rounded-xl">
+                @if ($post->thumbnail !== null)
+                    <img src="{{ asset('storage/' . $post->thumbnail) }}" alt="{{ $post->title }}" class="rounded-xl">
+                @else
+                    <img src="/images/illustration-1.png" alt="{{ $post->title }}" class="rounded-xl">
+                @endif
 
                 <p class="mt-4 block text-xs text-gray-400">
                     Published

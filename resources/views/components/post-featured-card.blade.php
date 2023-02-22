@@ -4,8 +4,11 @@
     class="rounded-xl border border-black border-opacity-0 transition-colors duration-300 hover:border-opacity-5 hover:bg-gray-100">
     <div class="py-6 px-5 lg:flex">
         <div class="flex-1 lg:mr-8">
-            {{-- TODO: replace the next image with a thumbnail --}}
-            <img src="/images/illustration-1.png" alt="Blog Post illustration" class="rounded-xl">
+            @if ($post->thumbnail !== null)
+                <img src="{{ asset('storage/' . $post->thumbnail) }}" alt="{{ $post->title }}" class="rounded-xl">
+            @else
+                <img src="/images/illustration-3.png" alt="{{ $post->title }}" class="rounded-xl">
+            @endif
         </div>
 
         <div class="flex flex-1 flex-col justify-between">
