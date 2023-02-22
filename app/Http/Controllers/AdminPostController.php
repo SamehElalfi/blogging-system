@@ -68,4 +68,12 @@ class AdminPostController extends Controller
         return redirect()->back()
             ->with('Post updated!');
     }
+
+    public function destroy(Post $post)
+    {
+        $post->delete();
+
+        return redirect()->back()
+            ->with('Post deleted!');
+    }
 }
