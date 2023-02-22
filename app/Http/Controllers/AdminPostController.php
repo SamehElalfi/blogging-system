@@ -41,4 +41,31 @@ class AdminPostController extends Controller
         return redirect()->back()
             ->with('success', 'Post created successfully');
     }
+
+    public function edit(Post $post)
+    {
+        return view('admin.posts.edit', compact('post'));
+    }
+    public function update(Post $post)
+    {
+
+        $fields = request()->validate([
+            'title' => ['required', 'max:255'],
+            'excerpt' => ['required', 'max:255'],
+            'body' => ['required'],
+            'category_id' => ['required', Rule::exists('categories', 'id')],
+            'thumbnail' => ['image']
+        ]);
+
+        // Save the uploaded thumbnail into storage directory
+        if (array_key_exists('thumbnail', $fields)) {
+            $fields['thumbnail'] = request()->file('thumbnail')
+                ->store('thumbnails');
+        }
+
+        $post->update($fields);
+
+        return redirect()->back()
+            ->with('Post updated!');
+    }
 }

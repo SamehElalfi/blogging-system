@@ -1,3 +1,3 @@
 @props(['name'])
 
-<label for="{{ $name }}" class="sr-only">{{ ucwords($name) }}</label>
+<label for="{{ $name }}">{{ ucwords($name) }}</label>
