@@ -36,10 +36,17 @@ class PostController extends Controller
             'excerpt' => ['required', 'max:255'],
             'body' => ['required'],
             'category_id' => ['required', Rule::exists('categories', 'id')],
+            'thumbnail' => ['required', 'image']
         ]);
 
-        $fields['slug'] = Str::slug($fields['title']);
+        // generate a new slug with random number
+        $fields['slug'] = Str::slug($fields['title']) . '-' . rand(0, 10 ** 6);
 
+        // Save the uploaded thumbnail into storage directory
+        $fields['thumbnail'] = request()->file('thumbnail')
+            ->store('thumbnails');
+
+        // Create a new post associated with the current user
         auth()->user()->posts()->create($fields);
 
         return redirect('/')

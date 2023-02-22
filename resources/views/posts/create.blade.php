@@ -2,7 +2,7 @@
     <main class="mx-auto mt-6 max-w-6xl space-y-6 lg:mt-20">
         <div class="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
             <div class="w-full space-y-8">
-                <form class="mt-8 space-y-6" action="/admin/posts" method="POST">
+                <form class="mt-8 space-y-6" action="/admin/posts" method="POST" enctype="multipart/form-data">
                     @csrf
 
                     <div class="-space-y-px rounded-md shadow-sm">
@@ -46,6 +46,14 @@
                                 @endforeach
                             </select>
                             @error('category_id')
+                                <p class="mt-1 mb-4 text-xs text-red-500">{{ $message }}</p>
+                            @enderror
+                        </div>
+
+                        <div>
+                            <label for="thumbnail" class="sr-only">Thumbnail</label>
+                            <input type="file" name="thumbnail" id="thumbnail">
+                            @error('thumbnail')
                                 <p class="mt-1 mb-4 text-xs text-red-500">{{ $message }}</p>
                             @enderror
                         </div>
